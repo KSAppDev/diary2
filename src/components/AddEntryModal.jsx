@@ -21,7 +21,9 @@ export default function AddEntryModal({ onClose, entries, setEntries }) {
     setError("");
 
     if (!title.trim() || !date.trim() || !imageUrl.trim() || !content.trim()) {
-      setError("Please fill in all fields.");
+      setError(
+        "I'm serious: Please fill in all fields or this doesn't work.^^"
+      );
       return;
     }
 
@@ -49,9 +51,9 @@ export default function AddEntryModal({ onClose, entries, setEntries }) {
 
   return (
     <ModalShell onClose={onClose}>
-      <h2 className="text-xl font-semibold">Add New Entry</h2>
+      <h2 className="text-xl font-semibold">Dear diary...</h2>
       <p className="mt-1 text-sm text-slate-400">
-        Title, date, image URL, and content are required.
+        Important: You need to fill in title, date, image URL, and content!
       </p>
 
       <form onSubmit={handleSubmit} className="mt-4 space-y-4">
@@ -67,7 +69,7 @@ export default function AddEntryModal({ onClose, entries, setEntries }) {
             value={title}
             onChange={(e) => setTitle(e.target.value)}
             className="w-full rounded-lg border border-slate-800 bg-slate-900/50 px-3 py-2 text-slate-100 outline-none focus:border-slate-600"
-            placeholder="e.g., A productive day"
+            placeholder="e.g., My awesometacular day"
           />
         </div>
 
@@ -98,7 +100,7 @@ export default function AddEntryModal({ onClose, entries, setEntries }) {
             onChange={(e) => setContent(e.target.value)}
             rows={6}
             className="w-full resize-none rounded-lg border border-slate-800 bg-slate-900/50 px-3 py-2 text-slate-100 outline-none focus:border-slate-600"
-            placeholder="Write your diary entry..."
+            placeholder="Dear diary, today ways a great day..."
           />
         </div>
 
