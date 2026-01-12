@@ -7,20 +7,19 @@ import ViewEntryModal from "./components/ViewEntryModal";
 const STORAGE_KEY = "diaryEntries";
 
 export default function App() {
-  const [entries, setEntries] = useState([]);
   const [isAddOpen, setIsAddOpen] = useState(false);
   const [isViewOpen, setIsViewOpen] = useState(false);
   const [selectedEntry, setSelectedEntry] = useState(null);
 
-  useEffect(() => {
+  const [entries, setEntries] = useState(() => {
     try {
       const raw = localStorage.getItem(STORAGE_KEY);
       const parsed = raw ? JSON.parse(raw) : [];
-      setEntries(Array.isArray(parsed) ? parsed : []);
+      return Array.isArray(parsed) ? parsed : [];
     } catch {
-      setEntries([]);
+      return [];
     }
-  }, []);
+  });
 
   useEffect(() => {
     localStorage.setItem(STORAGE_KEY, JSON.stringify(entries));
